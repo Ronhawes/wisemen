@@ -1,0 +1,8 @@
+
+CREATE TABLE levels(
+    player_id BIGSERIAL PRIMARY KEY,
+   
+    level TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)

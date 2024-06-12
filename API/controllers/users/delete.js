@@ -1,4 +1,4 @@
-const prisma = require("../../Prisma")
+const prisma = require("../../prisma")
 
 const DeleteComment = async (req, res, next) => {
   try {

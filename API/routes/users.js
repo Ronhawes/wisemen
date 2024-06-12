@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const prisma = require('../prismaClient');
+const prisma = require('../prisma');
 
 // User signup
 router.post('/signup', async (req, res) => {

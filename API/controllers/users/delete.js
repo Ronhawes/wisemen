@@ -1,27 +1,27 @@
 const prisma = require("../../prisma")
 
-const DeleteComment = async (req, res, next) => {
+const DeletePlayer = async (req, res, next) => {
   try {
-    const { comment_id } = req.params;
+    const { id } = req.query;
 
-    if (!comment_id) {
+    if (!id) {
       throw {
         custom: true,
-        message: "Comment ID is required",
+        message: "Player ID is required",
       };
     }
 
-    const commentData = await prisma.comments.delete({
+    const player = await prisma.players.delete({
       where: {
-        commentid: parseInt(comment_id),
+        playerid: parseInt(id),
       },
     });
 
-    return res.status(200).json({ message: "Comment was deleted successfully" });
+    return res.status(200).json({ message: "Player deleted successfully" });
 
   } catch (error) {
     next(error);
   }
 };
 
-module.exports = DeleteComment;
+module.exports = DeletePlayer;

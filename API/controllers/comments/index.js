@@ -1,11 +1,11 @@
-const AddPlayer = require("./add")
-const DeletePlayer = require("./delete")
-const UpdatePlayer = require("./update")
+const addComment = require("./add")
+const deleteComment = require("./delete")
+const updateComment = require("./update")
 
 
 module.exports = {
-    AddPlayer,
-    UpdatePlayer,
-    DeletePlayer
+    addComment,
+    updateComment,
+    deleteComment
 }
 

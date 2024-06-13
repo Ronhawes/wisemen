@@ -1,30 +1,26 @@
-const prisma = require("../../Prisma")
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
-const AddPlayer = async (req, res, next) => {
+const addComment = async (req, res, next) => {
   try {
-    const { fullnames, username } = req.body
+    const { comment} = req.body;
 
-    if (!fullnames || !username) {
-      throw {
-        custom: true,
-        message: "Fullnames and username are required",
-      };
+    if (!comment) {
+      return res.status(400).json({ message: "Comment is required" });
     }
 
-    const player = await prisma.players.create({
+    const newComment = await prisma.comment.create({
       data: {
-        fullnames,
-        username,
-        datecreated: new Date(),
-        dateupdated: new Date(),
+        comment,
+        created_at: new Date(),
+        updated_at: new Date(),
       },
     });
 
-    return res.status(200).json({ message: "Player was added successfully" });
-
+    return res.status(201).json({ message: "Comment added successfully", comment: newComment });
   } catch (error) {
     next(error);
   }
 };
 
-module.exports = AddPlayer;
+module.exports = addComment;

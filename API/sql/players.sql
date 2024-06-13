@@ -1,5 +1,7 @@
-CREATE TABLE users (
-    player_id BIGSERIAL PRIMARY KEY,
+DROP TABLE players;
+
+CREATE TABLE players (
+    id BIGSERIAL PRIMARY KEY,
     firstName VARCHAR(500),
     lastName VARCHAR(500),
     Pasword VARCHAR(500) NOT NULL,

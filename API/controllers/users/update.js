@@ -1,32 +1,33 @@
 const prisma = require("../../prisma")
 
-const UpdateComment = async (req, res, next) => {
+const UpdatePlayer = async (req, res, next) => {
   try {
-    const { player_id, comment_id } = req.params;
-    const { comment } = req.body;
+    const {id, firstName, LastName } = req.body;
 
-    if (!player_id || !comment_id || !comment) {
+    if (!id || !firstName || !LastName) {
       throw {
         custom: true,
-        message: "Player ID, comment ID, and comment are required",
+        message: "Player ID, fullnames, and username are required",
       };
     }
 
-    const commentData = await prisma.comments.update({
+    const player = await prisma.players.update({
       where: {
-        commentid: parseInt(comment_id),
+        playerid: parseInt(id),
       },
       data: {
-        comment,
+        firstNames,
+        LastName,
         dateupdated: new Date(),
+        datecreated: new Date(),
       },
     });
 
-    return res.status(200).json({ message: "Comment was updated successfully" });
+    return res.status(200).json({ message: "Player updated successfully" });
 
   } catch (error) {
     next(error);
   }
 };
 
-module.exports = UpdateComment;
+module.exports = UpdatePlayer;

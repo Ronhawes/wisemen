@@ -13,12 +13,3 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  player_id  BigInt   @id @default(autoincrement())
-  firstname  String   @db.VarChar(500)
-  lastname  String   @db.VarChar(500)
-  password   String   @db.VarChar(500)
-  username   String?  @unique
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now())
-}

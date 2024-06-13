@@ -1,11 +1,10 @@
-const { AddComment, deleteComment, updateComment } = require("../controllers/comments")
-
+const { addComment, updateComment, deleteComment } = require("../controllers/comments")
 
 const router = require("express").Router()
 
-router.post("/add", AddComment)
-router.post("/delete:player_id", DeleteComment)
-router.post("/update:player_id", updateComment)
 
+router.post('/comments/add', addComment);
+router.put('/comments/update', updateComment);
+router.delete('/comments/delete', deleteComment);
 
-module.exports = router
+module.exports = router;

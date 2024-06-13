@@ -3,8 +3,8 @@ const { AddPlayer, deletePlayer, updatePlayer } = require("../controllers/users"
 const router = require("express").Router()
 
 router.post("/add", AddPlayer)
-router.post("/delete:player_id", deletePlayer)
-router.post("/update:player_id", updatePlayer)
+router.delete("/delete", deletePlayer)
+router.put("/update", updatePlayer)
 
 
 module.exports = router
